@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 // const fs = require('fs').promises;
 const randomstring = require('randomstring');
 const data = require('./data.js');
+const validateLogin = require('./middlewares/validateLogin');
 
 const app = express();
 app.use(bodyParser.json());
@@ -21,7 +22,6 @@ app.listen(PORT, () => {
 
 // Primeiro Requisito
 app.get('/talker', async (req, res) => {
-  // const talkers = JSON.parse(await fs.readFile('./src/talker.json', 'utf8'));
   const talkers = await data();
   res.status(HTTP_OK_STATUS).json(talkers);
 });
@@ -38,7 +38,8 @@ app.get('/talker/:id', async (req, res) => {
   }
 });
 
-app.post('/login', (req, res) => {
+// Terceiro Requisito
+app.post('/login', validateLogin, (req, res) => {
   const token = randomstring.generate(16);
   res.status(HTTP_OK_STATUS).send({ token });
 });
