@@ -8,6 +8,7 @@ const validateRate = require('../middlewares/talker/validateRate');
 const validateTalk = require('../middlewares/talker/validateTalk');
 const validateToken = require('../middlewares/talker/validateToken');
 const validateWatchedat = require('../middlewares/talker/validateWatchedat');
+const writeData = require('../writeData');
 
 const router = express.Router();
 router.use(bodyParser.json());
@@ -32,14 +33,18 @@ router.get('/talker/:id', async (req, res) => {
 
 router.post(
   '/talker',
+  validateToken,
   validateAge,
   validateName,
-  validateRate,
   validateTalk,
-  validateToken,
+  validateRate,
   validateWatchedat,
   async (req, res) => {
-    
-  );
+    const newTalker = req.body;
+    const newData = await writeData(newTalker);
+
+    res.status(201).json(newData);
+  },
+);
 
 module.exports = router;
