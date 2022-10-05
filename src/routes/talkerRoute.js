@@ -9,6 +9,7 @@ const validateTalk = require('../middlewares/talker/validateTalk');
 const validateToken = require('../middlewares/talker/validateToken');
 const validateWatchedat = require('../middlewares/talker/validateWatchedat');
 const writeData = require('../writeData');
+const updateData = require('../updateData');
 
 const router = express.Router();
 router.use(bodyParser.json());
@@ -44,6 +45,24 @@ router.post(
     const newData = await writeData(newTalker);
 
     res.status(201).json(newData);
+  },
+);
+
+router.put(
+  '/talker/:id',
+  validateToken,
+  validateAge,
+  validateName,
+  validateTalk,
+  validateRate,
+  validateWatchedat,
+  async (req, res) => {
+    const { id } = req.params;
+    const updateTalker = req.body;
+    const dataId = { id: Number(id), ...updateTalker };
+    await updateData(id, updateTalker);
+    console.log(dataId);
+    res.status(HTTP_OK_STATUS).json(dataId);
   },
 );
 
