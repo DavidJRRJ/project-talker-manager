@@ -78,4 +78,19 @@ router.delete(
   },
 );
 
+router.get(
+  '/talker/search',
+  validateToken,
+  async (req, res) => {
+    const { q } = req.query;
+    const talkers = data();
+    const filteredTalkers = talkers.filter((talker) => talker.name.includes(q));
+    if (!q) {
+      return res.status(404).json(talkers);
+    }
+
+    res.status(HTTP_OK_STATUS).json(filteredTalkers);
+  },
+);
+
 module.exports = router;
