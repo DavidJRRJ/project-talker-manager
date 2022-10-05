@@ -1,6 +1,4 @@
 const fs = require('fs').promises;
-// const path = require('path');
-
 const data = require('./data');
 
 async function updateData(id, upData) {
@@ -15,7 +13,7 @@ async function updateData(id, upData) {
   console.log(alldata);
   try {
     await fs.writeFile(`${__dirname}/talker.json`, alldata);
-    // console(`Atualizou o palestrante com o id: ${id}`);
+    console.log(`Atualizou o palestrante com o id: ${id}`);
   } catch (err) {
     console.error(`Erro na escrita do arquivo: ${err}`);
   }

@@ -10,6 +10,7 @@ const validateToken = require('../middlewares/talker/validateToken');
 const validateWatchedat = require('../middlewares/talker/validateWatchedat');
 const writeData = require('../writeData');
 const updateData = require('../updateData');
+const deleteData = require('../deleteData');
 
 const router = express.Router();
 router.use(bodyParser.json());
@@ -63,6 +64,17 @@ router.put(
     await updateData(id, updateTalker);
     console.log(dataId);
     res.status(HTTP_OK_STATUS).json(dataId);
+  },
+);
+
+router.delete(
+  '/talker/:id',
+  validateToken,
+  async (req, res) => {
+    const { id } = req.params;
+    await deleteData(Number(id));
+
+    res.status(204).end();
   },
 );
 
