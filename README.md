@@ -150,7 +150,7 @@ Inicie o servidor:
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
 | `name`      | `string` | **Obrigatório** no mínimo 3 caracteres|
-| `age`      | `number` | **Obrigatório** |
+| `age`      | `number` | **Obrigatório**. Somente maiores de 18 anos |
 | `talk`      | `object` | **Obrigatório** |
 
 - O corpo da requisição deverá ter o seguinte formato
@@ -166,7 +166,7 @@ Inicie o servidor:
   ```
 - A requisição deve ter o token de autenticação nos headers, no campo `authorization`.
 
-  - Caso o token não seja encontrado retorne um código de `status 401`, com o seguinte corpo:
+  - Caso o token não seja encontrado retorna um código de `status 401`, com o seguinte corpo:
 
     ```json
     {
@@ -174,16 +174,15 @@ Inicie o servidor:
     }
     ```
 
-  - Caso o token seja inválido retorne um código de `status 401`, com o seguinte corpo:
+  - Caso o token seja inválido retorna um código de `status 401`, com o seguinte corpo:
 
     ```json
     {
       "message": "Token inválido"
     }
     ```  
-- O campo `name` deverá ter no mínimo 3 caracteres. Ele é obrigatório.
 
-  - Caso o campo não seja passado ou esteja vazio retorne um código de `status 400`, com o seguinte corpo:
+  - Caso o campo não seja passado ou esteja vazio retorna um código de `status 400`, com o seguinte corpo:
 
     ```json
     {
@@ -191,7 +190,7 @@ Inicie o servidor:
     }
     ```
 
-  - Caso o nome não tenha pelo menos 3 caracteres retorne um código de `status 400`, com o seguinte corpo:
+  - Caso o nome não tenha pelo menos 3 caracteres retorna um código de `status 400`, com o seguinte corpo:
 
     ```json
     {
@@ -199,9 +198,7 @@ Inicie o servidor:
     }
     ```
 
-- O campo `age` deverá ser um inteiro e apenas pessoas maiores de idade (pelo menos `18 anos`) podem ser cadastrados. Ele é obrigatório.
-
-  - Caso o campo não seja passado ou esteja vazio retorne um código de `status 400`, com o seguinte corpo:
+  - Caso o campo age não seja passado ou esteja vazio retorna um código de `status 400`, com o seguinte corpo:
 
     ```json
     {
@@ -209,7 +206,7 @@ Inicie o servidor:
     }
     ```
 
-  - Caso a pessoa palestrante não tenha pelo menos 18 anos retorne `status 400`, com o seguinte corpo:
+  - Caso a pessoa palestrante não tenha pelo menos 18 anos retorna `status 400`, com o seguinte corpo:
 
     ```json
     {
@@ -221,7 +218,7 @@ Inicie o servidor:
 
   - O campo `talk` é obrigatório.
 
-      - Caso o campo não seja informado retorne `status 400`, com o seguinte corpo:
+      - Caso o campo não seja informado retorna `status 400`, com o seguinte corpo:
 
         ```json
         {
@@ -231,7 +228,7 @@ Inicie o servidor:
       
   - A chave `watchedAt` é obrigatória.  
 
-    - Caso a chave não seja informada ou esteja vazia retorne `status 400`, com o seguinte corpo:
+    - Caso a chave não seja informada ou esteja vazia retorna `status 400`, com o seguinte corpo:
 
       ```json
       {
@@ -241,7 +238,7 @@ Inicie o servidor:
 
   - A chave `watchedAt` deve ser uma data no formato `dd/mm/aaaa`.
 
-    - Caso a data não respeite o formato `dd/mm/aaaa` retorne `status 400`, com o seguinte corpo:
+    - Caso a data não respeite o formato `dd/mm/aaaa` retorna `status 400`, com o seguinte corpo:
 
       ```json
       {
@@ -251,7 +248,7 @@ Inicie o servidor:
 
   - O campo `rate` é obrigatório.  
 
-    - Caso o campo não seja informado ou esteja vazio retorne `status 400`, com o seguinte corpo:
+    - Caso o campo não seja informado ou esteja vazio retorna `status 400`, com o seguinte corpo:
 
       ```json
       {
@@ -261,7 +258,7 @@ Inicie o servidor:
 
   - A chave `rate` deve ser um inteiro de 1 à 5.
 
-    - Caso a nota não seja um inteiro de 1 à 5 retorne `status 400`, com o seguinte corpo:
+    - Caso a nota não seja um inteiro de 1 à 5 retorna `status 400`, com o seguinte corpo:
 
       ```json
       {
@@ -293,7 +290,7 @@ Inicie o servidor:
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
 | `name`      | `string` | **Obrigatório** no mínimo 3 caracteres|
-| `age`      | `number` | **Obrigatório** |
+| `age`      | `number` | **Obrigatório**. Somente maiores de 18 anos |
 | `talk`      | `object` | **Obrigatório** |
 
 - O corpo da requisição deverá ter o seguinte formato:
@@ -311,7 +308,7 @@ Inicie o servidor:
 
 - A requisição deve ter o token de autenticação nos headers, no campo `authorization`.
 
-- Caso o token não seja encontrado retorne um código de `status 401`, com o seguinte corpo:
+- Caso o token não seja encontrado retorna um código de `status 401`, com o seguinte corpo:
 
     ```json
     {
@@ -319,7 +316,7 @@ Inicie o servidor:
     }
     ```
 
-- Caso o token seja inválido retorne um código de `status 401`, com o seguinte corpo:
+- Caso o token seja inválido retorna um código de `status 401`, com o seguinte corpo:
 
     ```json
     {
@@ -327,9 +324,7 @@ Inicie o servidor:
     }
     ```
 
-- O campo `name` deverá ter no mínimo 3 caracteres. Ele é obrigatório.
-
-- Caso o campo não seja passado ou esteja vazio retorne um código de `status 400`, com o seguinte corpo:
+- Caso o campo não seja passado ou esteja vazio retorna um código de `status 400`, com o seguinte corpo:
 
     ```json
     {
@@ -337,7 +332,7 @@ Inicie o servidor:
     }
     ```
 
-- Caso o nome não tenha pelo menos 3 caracteres retorne um código de `status 400`, com o seguinte corpo:
+- Caso o nome não tenha pelo menos 3 caracteres retorna um código de `status 400`, com o seguinte corpo:
 
     ```json
     {
@@ -345,9 +340,7 @@ Inicie o servidor:
     }
     ```
 
-- O campo `age` deverá ser um inteiro e apenas pessoas maiores de idade (pelo menos `18 anos`) podem ser cadastrados. Ele é obrigatório.
-
-- Caso o campo não seja passado ou esteja vazio retorne um código de `status 400`, com o seguinte corpo:
+- Caso o campo não seja passado ou esteja vazio retorna um código de `status 400`, com o seguinte corpo:
 
     ```json
     {
@@ -355,7 +348,7 @@ Inicie o servidor:
     }
     ```
 
-- Caso a pessoa palestrante não tenha pelo menos 18 anos retorne `status 400`, com o seguinte corpo:
+- Caso a pessoa palestrante não tenha pelo menos 18 anos retorna `status 400`, com o seguinte corpo:
 
     ```json
     {
@@ -367,7 +360,7 @@ Inicie o servidor:
 
 - O campo `talk` é obrigatório.
 
-    - Caso o campo não seja informado retorne `status 400`, com o seguinte corpo:
+    - Caso o campo não seja informado retorna `status 400`, com o seguinte corpo:
 
         ```json
         {
@@ -377,7 +370,7 @@ Inicie o servidor:
     
 - A chave `watchedAt` é obrigatória.  
 
-    - Caso a chave não seja informada ou esteja vazia retorne `status 400`, com o seguinte corpo:
+    - Caso a chave não seja informada ou esteja vazia retorna `status 400`, com o seguinte corpo:
 
     ```json
     {
@@ -387,7 +380,7 @@ Inicie o servidor:
 
 - A chave `watchedAt` deve ser uma data no formato `dd/mm/aaaa`.
 
-    - Caso a data não respeite o formato `dd/mm/aaaa` retorne `status 400`, com o seguinte corpo:
+    - Caso a data não respeite o formato `dd/mm/aaaa` retorna `status 400`, com o seguinte corpo:
 
     ```json
     {
@@ -397,7 +390,7 @@ Inicie o servidor:
 
 - O campo `rate` é obrigatório.  
 
-    - Caso o campo não seja informado ou esteja vazio retorne `status 400`, com o seguinte corpo:
+    - Caso o campo não seja informado ou esteja vazio retorna `status 400`, com o seguinte corpo:
 
     ```json
     {
@@ -407,7 +400,7 @@ Inicie o servidor:
 
 - A chave `rate` deve ser um inteiro de 1 à 5.
 
-    - Caso a nota não seja um inteiro de 1 à 5 retorne `status 400`, com o seguinte corpo:
+    - Caso a nota não seja um inteiro de 1 à 5 retorna `status 400`, com o seguinte corpo:
 
     ```json
     {
@@ -415,8 +408,7 @@ Inicie o servidor:
     }
     ```
     
-- Caso esteja tudo certo, retorne o `status 200` e a pessoa editada.
-- O endpoint deve retornar o `status 200` e a pessoa palestrante que foi editada, da seguinte forma:
+- Caso esteja tudo certo, retorna o `status 200` e a pessoa editada.
 
 ```json
 {
